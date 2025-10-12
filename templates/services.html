@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Services | Skill Swap{% endblock title %}
+
+{% block content %}
+
+<section class="bg-gradient-to-r from-[#020254] to-[#030386] text-white py-12 md:py-20">
+
+    <div class="max-w-7xl mx-auto px-4">
+
+        <!-- Header -->
+        <div class="text-center mb-10">
+            <h1 class="text-2xl md:text-3xl font-bold mb-2">Explore Skills & Services</h1>
+            <p class="text-skillswap-light text-lg">Browse available skills, filter by interest, and find your perfect learning partner.</p>
+        </div>
+
+        <!-- Search & Filter Bar -->
+        <div class="flex flex-col md:flex-row gap-4 mb-12 justify-center items-center">
+            <!-- Search Input -->
+            <div class="relative w-full md:w-96">
+                <input 
+                    type="text" 
+                    placeholder="Search Skills..." 
+                    class="w-full pl-10 pr-4 py-3 bg-blue-900/30 border border-blue-700 rounded-full text-white placeholder-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-3.5 text-blue-300"></i>
+            </div>
+
+            <!-- Category Dropdown -->
+            <div class="w-full md:w-48 relative">
+                <select class="w-full px-4 py-3 bg-blue-900/30 border border-blue-700 rounded-full text-white focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none ">
+                    <option>All Categories</option>
+                    <option>Technical</option>
+                    <option>Creative / Arts</option>
+                    <option>Music</option>
+                    <option>Languages</option>
+                    <option>Professional / Career</option>
+                </select>
+                <i class="fa-solid fa-chevron-down absolute right-3 top-3.5 text-blue-300 pointer-events-none"></i>
+            </div>
+        </div>
+
+        <!-- Skill Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+
+            <!-- Technical -->
+            <div class="bg-blue-900/20 border border-blue-700 rounded-xl p-6 hover:bg-blue-900/30 transition">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="bg-indigo-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="fa-solid fa-code mr-1"></i> Technical
+                    </span>
+                </div>
+                <p class="text-skillswap-light leading-relaxed">
+                    Build apps, design websites, edit videos, and bring ideas to life with code & animation.
+                </p>
+            </div>
+
+            <!-- Creative / Arts -->
+            <div class="bg-blue-900/20 border border-blue-700 rounded-xl p-6 hover:bg-blue-900/30 transition">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="fa-solid fa-palette mr-1"></i> Creative / Arts
+                    </span>
+                </div>
+                <p class="text-skillswap-light leading-relaxed">
+                    Capture and create stunning visual content. Sketch, design, and create stunning digital art that inspires.
+                </p>
+            </div>
+
+            <!-- Music -->
+            <div class="bg-blue-900/20 border border-blue-700 rounded-xl p-6 hover:bg-blue-900/30 transition">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="fa-solid fa-music mr-1"></i> Music
+                    </span>
+                </div>
+                <p class="text-skillswap-light leading-relaxed">
+                    Play guitar, master piano, and find your voice through music.
+                </p>
+            </div>
+
+            <!-- Languages -->
+            <div class="bg-blue-900/20 border border-blue-700 rounded-xl p-6 hover:bg-blue-900/30 transition">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="bg-yellow-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="fa-solid fa-globe mr-1"></i> Languages
+                    </span>
+                </div>
+                <p class="text-skillswap-light leading-relaxed">
+                    Speak confidently, boost fluency, and connect with new cultures.
+                </p>
+            </div>
+
+            <!-- Professional / Career (full width on mobile) -->
+            <div class="md:col-span-2 bg-blue-900/20 border border-blue-700 rounded-xl p-6 hover:bg-blue-900/30 transition">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="bg-red-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                        <i class="fa-solid fa-briefcase mr-1"></i> Professional / Career
+                    </span>
+                </div>
+                <p class="text-skillswap-light leading-relaxed">
+                    Boost your career with public speaking, smart marketing, resume hacks, and networking skills.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Footer Text -->
+        <div class="text-center text-xs text-blue-300 mt-12 pb-6">
+            ©Copyright 2025 | All rights reserved | <a href="#" class="underline">Terms of Use</a> | <a href="#" class="underline">Privacy Statement</a>
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
