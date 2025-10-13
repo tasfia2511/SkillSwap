@@ -1,0 +1,131 @@
+
+{% load static %}
+
+
+
+<header class="bg-gradient-to-r from-[#B5CBFF] to-[#9AACD9] border-b-2 border-blue-800 px-4 py-3">
+  <nav class="flex items-center justify-between max-w-7xl mx-auto">
+    <!-- Logo Section -->
+    <a href="{% url 'home' %}" class="flex items-center space-x-2">
+      <img src="{% static 'app/images/logo-part-1.png' %}" alt="Logo" class="h-10 w-auto">
+      <span class="text-blue-800 font-bold text-xl hidden sm:block">Skillswap</span>
+    </a>
+
+    <!-- Desktop: Search + Nav (hidden on mobile) -->
+    <div class="hidden lg:flex items-center space-x-6">
+      <!-- Search Bar -->
+      <div class="relative hidden xl:block">
+        <input 
+          type="text" 
+          placeholder="Search..." 
+          class="pl-10 pr-4 py-2 border border-[#020254] rounded-full focus:outline-none focus:ring-2 focus:ring-[#020254] focus:border-transparent w-64"
+        >
+        <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-[#020254]"></i>
+      </div>
+
+      <!-- Nav Links -->
+      <ul class="flex items-center space-x-6">
+        {% comment %} <li><a href="{% url 'home' %}" class="text-blue-800 hover:text-blue-900 font-medium">Home</a></li> {% endcomment %}
+
+        {% comment %} page name = {{ page }} {% endcomment %}
+
+
+        <li><a href="{% url 'how_it_works' %}" {% if page == 'how_it_works' %}class="text-blue-800 hover:text-blue-900 font-bold "{% endif %} class="text-blue-800 hover:text-blue-900 font-medium" >How It Works</a></li>
+
+
+        <li><a href="{% url 'about_us' %}" {% if page == 'about_us' %}class="text-blue-800 hover:text-blue-900 font-bold"{% endif %} class="text-blue-800 hover:text-blue-900 font-medium" >About Us</a></li>
+
+
+        <li><a href="{% url 'services' %}" {% if page == 'services' %}class="text-blue-800 hover:text-blue-900 font-bold"{% endif %} class="text-blue-800 hover:text-blue-900 font-medium" >Services</a></li>
+
+        <li><a href="{% url 'browse_skills' %}" {% if page == 'browse_skills' %}class="text-blue-800 hover:text-blue-900 font-bold"{% endif %} class="text-blue-800 hover:text-blue-900 font-medium" >Browse Skills</a></li>
+
+        <li><a href="{% url 'faq' %}" {% if page == 'faq' %}class="text-blue-800 hover:text-blue-900 font-bold"{% endif %} class="text-blue-800 hover:text-blue-900 font-medium" >FAQ</a></li>
+
+        {% if user.is_authenticated %}
+
+
+        <li><a href="{% url 'dashboard' %}" {% if page == 'dashboard' %}class="text-blue-800 hover:text-blue-900 font-bold"{% endif %} class="text-blue-800 hover:text-blue-900 font-medium" >
+            Dashboard 
+          </a></li>
+
+          <li><a href="{% url 'profile' user.id %}" {% if page == 'profile' %}class="text-blue-800 hover:text-blue-900 font-bold"{% endif %} class="text-blue-800 hover:text-blue-900 font-medium" >
+            Profile <i class="fa-solid fa-user"></i>
+          </a></li>
+          {% comment %} <li><a href="{% url 'logout' %}" class="text-blue-800 hover:text-blue-900 font-medium">Logout</a></li> {% endcomment %}
+
+           <li><a href="{% url 'logout' %}" class="bg-[#020254] text-white px-4 py-2 rounded-full font-medium hover:bg-blue-900 transition">Logout <i class="fa-solid fa-right-from-bracket"></i></a></li>
+        {% else %}
+          <li><a href="{% url 'login' %}" class="bg-[#020254] text-white px-4 py-2 rounded-full font-medium hover:bg-blue-900 transition">Login <i class="fa-solid fa-right-from-bracket"></i></a></li>
+          <li><a href="{% url 'signup' %}" class="border border-[#020254] text-[#020254] px-4 py-2 rounded-full font-medium hover:bg-blue-50 transition">Sign Up <i class="fa-solid fa-user-plus"></i></a></li>
+        {% endif %}
+      </ul>
+    </div>
+
+    <!-- Mobile Hamburger Button -->
+    <button id="mobile-menu-button" class="lg:hidden text-blue-800 focus:outline-none">
+      <i class="fa-solid fa-bars text-2xl"></i>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu (hidden by default) -->
+  <div id="mobile-menu" class="hidden lg:hidden mt-4 pb-4 max-w-7xl mx-auto">
+    <!-- Search on mobile -->
+    <div class="relative mb-4 mx-4">
+      <input 
+        type="text" 
+        placeholder="Search..." 
+        class="w-full pl-10 pr-4 py-2 border border-[#020254] rounded-full focus:outline-none focus:ring-2 focus:ring-[#020254]"
+      >
+      <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-[#020254]"></i>
+    </div>
+
+    <!-- Mobile Nav Links -->
+    <ul class="space-y-3 px-4">
+      {% comment %} <li><a href="{% url 'home' %}" class="block text-blue-800 hover:text-blue-900 font-medium py-2">Home</a></li> {% endcomment %}
+      <li><a href="{% url 'how_it_works' %}" {% if page == 'how_it_works' %}class="text-blue-800 hover:text-blue-900 font-bold border-b"{% endif %} class="block text-blue-800 hover:text-blue-900 font-medium py-2">How It Works</a></li>
+
+      <li><a href="{% url 'about_us' %}" {% if page == 'about_us' %}class="text-blue-800 hover:text-blue-900 font-bold border-b"{% endif %} class="block text-blue-800 hover:text-blue-900 font-medium py-2">About Us</a></li>
+
+
+      <li><a href="{% url 'services' %}" {% if page == 'services' %}class="text-blue-800 hover:text-blue-900 font-bold border-b"{% endif %} class="block text-blue-800 hover:text-blue-900 font-medium py-2">Services</a></li>
+
+
+      <li><a href="{% url 'browse_skills' %}" {% if page == 'browse_skills' %}class="text-blue-800 hover:text-blue-900 font-bold border-b"{% endif %} class="block text-blue-800 hover:text-blue-900 font-medium py-2">Browse Skills</a></li>
+
+      <li><a href="{% url 'faq' %}" {% if page == 'faq' %}class="text-blue-800 hover:text-blue-900 font-bold border-b"{% endif %} class="block text-blue-800 hover:text-blue-900 font-medium py-2">FAQ</a></li>
+
+      {% if user.is_authenticated %}
+        <li><a href="{% url 'profile' user.id %}" class="block text-blue-800 hover:text-blue-900 font-medium py-2">
+          {% comment %} user icon {% endcomment %}
+        Profile  <i class="fa-solid fa-user"></i> 
+        </a></li>
+        <li><a href="{% url 'logout' %}" class="block bg-[#020254] text-white text-center py-2 rounded-full font-medium hover:bg-blue-900 transition">Logout</a></li>
+      {% else %}
+        <li><a href="{% url 'login' %}" class="block bg-[#020254] text-white text-center py-2 rounded-full font-medium hover:bg-blue-900 transition">Login</a></li>
+        <li><a href="{% url 'signup' %}" class="block border border-[#020254] text-[#020254] text-center py-2 rounded-full font-medium hover:bg-blue-50 transition">Sign Up</a></li>
+      {% endif %}
+    </ul>
+  </div>
+</header>
+
+<!-- JavaScript for Mobile Menu Toggle -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', function () {
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      // Optional: Close menu when clicking outside
+      document.addEventListener('click', function (event) {
+        if (!mobileMenu.contains(event.target) && !mobileMenuButton.contains(event.target)) {
+          mobileMenu.classList.add('hidden');
+        }
+      });
+    }
+  });
+</script>
