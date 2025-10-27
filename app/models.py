@@ -26,6 +26,6 @@ class CanLearn(models.Model):
     learner = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.learner} can learn {self.skill}"
+        return f"{self.learner} can learn {self.skill}" 
         
         
