@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home | Skill Swap{% endblock title %}
+
+{% block content %}
+
+<section class="min-h-[calc(100vh-68px)] bg-indigo-600 ">
+
+
+    <!-- Hero Section -->
+    <section
+        class="bg-gradient-to-br from-[#020254] to-[#0404A3] text-white py-12 px-4 md:py-20 md:px-8 min-h-[733px] flex items-center justify-center">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10">
+
+            <!-- Left Text Content -->
+            <div class="md:w-1/2 space-y-6">
+                <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">SkillSwap</h1>
+                <p class="text-lg md:text-xl opacity-90">
+                    A Peer-to-Peer Skill Exchange Platform.
+                    Exchange skills, learn affordably, connect authentically.
+                </p>
+
+                <!-- Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 mt-8">
+                    <a href="{% url 'browse_skills' %}"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-full font-medium transition text-center">
+                        Explore & Learn >
+                    </a>
+                    <a href="{% url 'teach' %}"
+                        class="border border-indigo-300 hover:bg-indigo-800 text-indigo-200 px-6 py-3 rounded-full font-medium transition text-center">
+                        Share Your Skill >
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Illustration / Graphic -->
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative w-full max-w-md">
+                    <!-- Laptop mockup -->
+                    <div class="rounded-lg shadow-lg p-4 relative z-10">
+                        <div class=" rounded-md flex items-center justify-center">
+                            <img src="{% static 'app/images/landing.png' %}" alt="">
+                        </div>
+                    </div>
+
+
+
+                    <!-- Icons: cloud, gear, chart, etc. -->
+                    <div class="absolute top-8 left-1/4 w-8 h-8 text-blue-300">
+                        <i class="fa-solid fa-cloud"></i>
+                    </div>
+                    <div class="absolute top-8 right-1/4 w-8 h-8 text-green-300">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <div class="absolute bottom-8 left-1/4 w-8 h-8 text-yellow-300">
+                        <i class="fa-solid fa-gear"></i>
+                    </div>
+                    <div class="absolute bottom-8 right-1/4 w-8 h-8 text-red-300">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+
+                    <!-- Coffee cup & notepad -->
+                    <div class="absolute bottom-0 left-1/4 transform -translate-x-1/2 w-8 h-8 text-orange-500">
+                        <i class="fa-solid fa-mug-hot"></i>
+                    </div>
+                    <div class="absolute bottom-0 right-1/4 transform translate-x-1/2 w-8 h-8 text-gray-300">
+                        <i class="fa-solid fa-pen"></i>
+                    </div>
+
+                    <!-- Connect lines (simplified with absolute positioning) -->
+                    <div class="absolute inset-0 pointer-events-none">
+                        <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                            <div class="w-full h-full relative">
+                                <!-- You can add SVG paths or use pseudo-elements for real lines if needed -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA Bar -->
+    <div class="bg-blue-100 py-6 px-4">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+
+            <!-- Contact Info -->
+            <div class="text-blue-800">
+                <h3 class="font-semibold mb-2">Connect with us</h3>
+                <div class="flex items-center gap-2 mb-2">
+                    <i class="fa-solid fa-envelope text-sm"></i>
+                    <span>skillswap@gmail.com</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-phone text-sm"></i>
+                    <span>+1555-555-5556</span>
+                </div>
+            </div>
+
+            <!-- Tagline -->
+            <div class="text-blue-800 text-center md:text-left">
+                <p class="font-medium text-lg">
+                    Instead of paying money, trade knowledge in a mutual beneficial way!
+                </p>
+            </div>
+
+            <!-- Social Icons -->
+            <div class="flex space-x-4 text-blue-800">
+                <a href="#" class="text-xl hover:text-blue-600"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-xl hover:text-blue-600"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-xl hover:text-blue-600"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="text-xl hover:text-blue-600"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+{% endblock %}
