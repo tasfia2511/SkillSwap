@@ -1,0 +1,161 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up — SkillSwap</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Custom Tailwind Config (optional) -->
+    <style>
+        .bg-skillswap-dark { background-color: #020254; }
+        .bg-skillswap-light { background-color: #B5CBFF; }
+    </style>
+</head>
+
+<body class="bg-gradient-to-b from-[#020254] to-[#030386] font-sans">
+
+    <div class="flex min-h-screen">
+        <!-- Left Sidebar -->
+        <div class="hidden md:flex w-full md:w-1/3 flex-col justify-between p-8  text-white ">
+            <a href="{% url 'home' %}" class='flex gap-5 items-center'>
+                <img src="{% static 'app/images/logo-part-1.png' %}" alt="SkillSwap Logo" class="h-10 mb-6">
+                <h2 class="text-xl font-bold mb-4">SkillSwap</h2>
+                
+            </a>
+
+            <div>
+                <p class="text-3xl leading-relaxed">
+                    Share skills, gain insights—grow together without spending.
+                </p>
+            </div>
+            <div class="text-xs opacity-70">
+                © 2025 SkillSwap. All rights reserved.
+            </div>
+        </div>
+
+        <!-- Right Form Section -->
+        <div class="absolute inset-5 md:inset-0 md:relative md:w-full md:w-2/3 p-8 md:p-12 flex flex-col justify-center rounded-3xl md:rounded-tl-3xl md:rounded-bl-3xl md:rounded-tr-0 md:rounded-br-0 bg-skillswap-light">
+            <div class="max-w-3xl mx-auto w-full">
+                <h1 class="text-2xl md:text-3xl font-bold text-blue-900 mb-6">Create Account</h1>
+
+                <!-- Django Messages -->
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="mb-4 p-3 rounded-md bg-red-100 text-red-700 border border-red-300">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <!-- Signup Form -->
+                <form method="post" action="{% url 'signup' %}" class="space-y-4">
+                    {% csrf_token %}
+
+                    <!-- First Name & Last Name (side by side on desktop) -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="relative">
+                            <label for="first_name" class="absolute -top-2 left-3 bg-skillswap-light px-1 text-xs text-blue-800">First Name</label>
+                            <input 
+                                required
+                                placeholder="First Name" 
+                                type="text" 
+                                name="first_name" 
+                                id="first_name"
+                                class="w-full px-4 py-3 border border-[#020254] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#020254] focus:border-transparent bg-transparent"
+                            >
+                        </div>
+                        <div class="relative">
+                            <label for="last_name" class="absolute -top-2 left-3 bg-skillswap-light px-1 text-xs text-blue-800">Last Name</label>
+                            <input 
+                                required
+                                placeholder="Last Name" 
+                                type="text" 
+                                name="last_name" 
+                                id="last_name"
+                                class="w-full px-4 py-3 border border-[#020254] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#020254] focus:border-transparent bg-transparent"
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="relative">
+                        <label for="email" class="absolute -top-2 left-3 bg-skillswap-light px-1 text-xs text-blue-800">Email</label>
+                        <input 
+                            required
+                            placeholder="Email" 
+                            type="email" 
+                            name="email" 
+                            id="email"
+                            class="w-full px-4 py-3 border border-[#020254] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#020254] focus:border-transparent bg-transparent"
+                        >
+                    </div>
+
+                    <!-- Password -->
+                    <div class="relative">
+                        <label for="password" class="absolute -top-2 left-3 bg-skillswap-light px-1 text-xs text-blue-800">Password</label>
+                        <input 
+                            required
+                            placeholder="Password" 
+                            type="password" 
+                            name="password" 
+                            id="password"
+                            class="w-full px-4 py-3 border border-[#020254] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#020254] focus:border-transparent bg-transparent"
+                        >
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div class="relative">
+                        <label for="confirm_password" class="absolute -top-2 left-3 bg-skillswap-light px-1 text-xs text-blue-800">Confirm Password</label>
+                        <input 
+                            required
+                            placeholder="Confirm Password" 
+                            type="password" 
+                            name="confirm_password" 
+                            id="confirm_password"
+                            class="w-full px-4 py-3 border border-[#020254] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#020254] focus:border-transparent bg-transparent"
+                        >
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button 
+                        type="submit" 
+                        class="w-full mt-6 bg-blue-900 hover:bg-blue-800 text-white font-medium py-3 rounded-lg transition"
+                    >
+                        Sign Up <i class="fa-solid fa-right-to-bracket"></i>
+                    </button>
+                </form>
+
+                <!-- Social Buttons (Optional - not in original logic, but matches image) -->
+                <div class="mt-6 space-y-3">
+                    <button class="w-full flex items-center justify-center gap-2 border border-blue-300 rounded-lg py-2 hover:bg-blue-50 transition">
+                        <i class="fab fa-google text-red-500"></i>
+                        <span>Sign up with Google</span>
+                    </button>
+                    <button class="w-full flex items-center justify-center gap-2 border border-blue-300 rounded-lg py-2 hover:bg-blue-50 transition">
+                        <i class="fab fa-facebook-f text-blue-600"></i>
+                        <span>Sign up with Facebook</span>
+                    </button>
+                </div>
+
+                <!-- Login Link -->
+                <div class="mt-8 text-center">
+                    <a href="{% url 'login' %}" class="inline-block border border-blue-300 rounded-full px-6 py-2 text-blue-800 hover:bg-blue-50 transition">
+                        Existing user? Log in
+                    </a>
+                </div>
+
+                <!-- Home Link -->
+                <div class="mt-4 text-center">
+                    <a href="{% url 'home' %}" class="text-blue-600 hover:underline text-sm">← Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
