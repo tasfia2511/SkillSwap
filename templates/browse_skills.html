@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
+
 {% block title %}Browse Skills | Skill Swap{% endblock title %}
+
+
 {% block content %}
 
 <section class="bg-gradient-to-r from-[#020254] to-[#030386] text-white py-12 md:py-20 min-h-[calc(100vh-68px)]">
@@ -170,6 +173,7 @@
         {% else %}
         <p>{{ user_data.user }}</p>
         {% endif %}
+
     </a>
     <!-- <p>Teaching: {{ user_data.teaching_skills|join:", " }}</p> -->
     <!-- <p>Teaching: {{ user_data.teaching_skills|join:", " }}</p> -->
