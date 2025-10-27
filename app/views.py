@@ -278,4 +278,4 @@ def browse_skills(request):
         'skills': skills_data,
         'page':'browse_skills'
     }
-    return render(request, 'browse_skills.html', CONTEXT)
+    return render(request, 'browse_skills.html', CONTEXT) 
