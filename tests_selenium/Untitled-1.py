@@ -1,4 +1,3 @@
-
 from selenium import webdriver
 import time
 
@@ -10,9 +9,6 @@ print("Page title is:", driver.title)
 
 time.sleep(5)
 driver.quit()
-
-
-
 from selenium import webdriver
 import time
 
@@ -24,10 +20,6 @@ print("Page title is:", driver.title)
 
 time.sleep(5)
 driver.quit()
-
-
-
-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
@@ -300,5 +292,3 @@ except Exception:
 time.sleep(2)
 driver.quit()
 print("🎯 Profile Page Test completed successfully!")
-
-
