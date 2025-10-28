@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Browse Skills | Skill Swap{% endblock title %}
+
+
+{% block content %}
+
+<section class="bg-gradient-to-r from-[#020254] to-[#030386] text-white py-12 md:py-20 min-h-[calc(100vh-68px)]">
+
+    <div class="max-w-7xl mx-auto px-4">
+
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-xl md:text-2xl font-bold">Discover amazing skills from our community and find your perfect learning partner!</h1>
+        </div>
+
+        <!-- Search & Filters Bar -->
+        <div class="flex flex-col md:flex-row gap-4 mb-8 justify-center items-center">
+            <!-- Search Input -->
+            <div class="relative w-full md:w-96">
+                <input 
+                    type="text" 
+                    placeholder="Search skills or people..." 
+                    class="w-full pl-10 pr-4 py-3 bg-blue-900/30 border border-blue-700 rounded-full text-white placeholder-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-4 text-blue-300"></i>
+            </div>
+
+            <!-- Category Dropdown -->
+            <div class="w-full md:w-48">
+                <select class="w-full px-4 py-3 bg-blue-900/30 border border-blue-700 rounded-full text-white focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none">
+                    <option>All Categories</option>
+                    <option>Technical</option>
+                    <option>Creative / Arts</option>
+                    <option>Music</option>
+                    <option>Languages</option>
+                    <option>Professional / Career</option>
+                </select>
+                <i class="fa-solid fa-chevron-down absolute right-3 top-3.5 text-blue-300 pointer-events-none"></i>
+            </div>
+
+            <!-- Level Dropdown -->
+            <div class="w-full md:w-48">
+                <select class="w-full px-4 py-3 bg-blue-900/30 border border-blue-700 rounded-full text-white focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none">
+                    <option>All Levels</option>
+                    <option>Beginner</option>
+                    <option>Intermediate</option>
+                    <option>Advanced</option>
+                </select>
+                <i class="fa-solid fa-chevron-down absolute right-3 top-3.5 text-blue-300 pointer-events-none"></i>
+            </div>
+        </div>
+
+        <!-- Skills List -->
+        <div class="space-y-6 mb-10">
+
+            {% for user_data in skills %}
+
+            <!-- User Card -->
+            <div class="bg-blue-100/20 border border-blue-700 rounded-2xl p-6 hover:bg-blue-100/30 transition">
+
+                <!-- Header: Name, Rating, Exchanges -->
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-4">
+                    <div>
+                        <h2 class="text-xl font-bold">{{ user_data.user }}</h2>
+                        <div class="flex items-center gap-4 mt-1 text-sm">
+                            <span class="flex items-center gap-1">
+                                <i class="fa-solid fa-star text-yellow-400"></i>
+                                {{ user_data.rating|default:"4.8" }}({{ user_data.review_count|default:"37" }} reviews)
+                            </span>
+                            {% comment %} <span class="flex items-center gap-1">
+                                <i class="fa-solid fa-repeat text-blue-300"></i>
+                                {{ user_data.exchange_count|default:"21" }} exchanges
+                            </span> {% endcomment %}
+                        </div>
+                    </div>
+                    <div>
+                        <!-- View Profile Button -->
+                        <a href="{% url 'profile' user_data.user_id %}" class="inline-flex items-center gap-1 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg font-medium transition">
+                            View profile 
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                        {% comment %} Learn Now Button {% endcomment %}
+                        <a href="{% url 'learn' %}" class="inline-flex items-center gap-1 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg font-medium transition">
+                            Learn Now 
+
+                            {% comment %} pen icon {% endcomment %}
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- Skills Section -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                    <!-- Can Teach -->
+                    <div>
+                        <h3 class="font-bold mb-3">Can Teach:</h3>
+                        <div class="flex flex-wrap gap-2">
+                            {% for skill in user_data.teaching_skills %}
+                                <span class="bg-blue-900/30 border border-blue-700 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                    {{ skill.skill__name }}
+                                </span>
+                            {% empty %}
+                                <span class="text-skillswap-light italic">No skills taught yet.</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <!-- Wants to Learn -->
+                    <div>
+                        <h3 class="font-bold mb-3">Wants to Learn:</h3>
+                        <div class="flex flex-wrap gap-2">
+                            {% for skill in user_data.learning_skills %}
+                                <span class="bg-blue-900/30 border border-blue-700 text-white px-3 py-1 rounded-full text-sm font-medium">
+                                    {{ skill }}
+                                </span>
+
+                            {% empty %}
+                                <span class="text-skillswap-light italic">No skills wanted yet.</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% empty %}
+            <div class="text-center py-10 text-skillswap-light">
+                No users found. Try adjusting your search or filters.
+            </div>
+            {% endfor %}
+
+        </div>
+
+        <!-- Load More Button -->
+        <div class="text-center mb-10">
+            <a href="#" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-full font-medium transition">
+                Load More Results >
+            </a>
+        </div>
+
+        <!-- Footer Text -->
+        <div class="text-center text-xs text-blue-300 pb-6">
+            ©Copyright 2025 | All rights reserved | <a href="#" class="underline">Terms of Use</a> | <a href="#" class="underline">Privacy Statement</a>
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
+
+
+{% comment %} 
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<section>
+
+    <h1>Browse Skills</h1>
+    {% for user_data in skills %}
+    <a href="{% url 'profile' user_data.user_id %}">
+
+        {% if user_data.user == request.user.username %}
+        <p>{{ user_data.user }}</p>
+        {% else %}
+        <p>{{ user_data.user }}</p>
+        {% endif %}
+
+    </a>
+    <!-- <p>Teaching: {{ user_data.teaching_skills|join:", " }}</p> -->
+    <!-- <p>Teaching: {{ user_data.teaching_skills|join:", " }}</p> -->
+    <p>Teaching: </p>
+    <ul>
+        {% for skill in user_data.teaching_skills %}
+        <li>{{ skill.skill__name }}</li>
+        {% endfor %}
+    </ul>
+
+    <p>Learning: {{ user_data.learning_skills|join:", " }}</p>
+    <hr>
+    {% endfor %}
+
+</section>
+
+{% endblock %} {% endcomment %}
